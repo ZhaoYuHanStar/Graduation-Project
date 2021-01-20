@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:orientation="vertical">
+
+    <!--搜索框没写-->
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#F5F5F5" />
+
+    <LinearLayout
+        android:layout_width="380dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <!--下拉刷新组件-->
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/home_smartRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v4.widget.NestedScrollView
+                android:id="@+id/home_scrollview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:background="#F5F5F5" />
+
+                    <GridView
+                        android:id="@+id/home_classification"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:layout_marginTop="10dp"
+                        android:columnWidth="60dp"
+                        android:listSelector="#fff"
+                        android:numColumns="4"
+                        android:stretchMode="spacingWidthUniform" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:background="#F5F5F5" />
+
+                    <!--热门推荐栏-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:src="@drawable/icon_hot" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:text="热门推荐"
+                            android:textColor="@color/tabweight_font"
+                            android:textSize="20dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:background="#F5F5F5" />
+                    <!--推荐列表-->
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/home_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="448dp"
+                        android:layout_marginTop="10dp" />
+
+
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

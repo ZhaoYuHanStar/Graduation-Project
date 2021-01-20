@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="用户条款"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="         您确认，已充分阅读、理解并接受本协议的全部内容，特别是其中关于限制和/或免除责任的条款，以及开通或使用某项服务适用的相关协议、规则，否则，您无权使用本服务。一旦您选择“同意”（具体以注册页面规定流程为准）并完成 InterView 用户注册或者已使用本服务，即视为您同意遵循本协议及相关协议、规则之所有约定，受其约束。"
+        android:textColor="#000" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="         本公司有权单方调整、修订本服务相关规则，并通过站内信、邮件通知等方式予以公布，无须另行征得您的同意；该等服务规则应以您使用本服务时的具体页面提示为准，您同意并遵照服务规则是您使用本服务的前提。"
+        android:textColor="#000" />
+</LinearLayout>

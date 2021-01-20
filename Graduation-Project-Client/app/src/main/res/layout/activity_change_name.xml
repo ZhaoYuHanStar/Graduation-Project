@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/colorBackground"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText
+        android:layout_marginTop="10dp"
+        android:id="@+id/et_change_name"
+        android:background="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    <Button
+        android:layout_marginTop="40dp"
+        android:background="@color/colorBtn"
+        android:textColor="@android:color/white"
+        android:text="提交修改"
+        android:id="@+id/btn_change_name"
+        android:layout_width="300dp"
+        android:layout_height="40dp" />
+</LinearLayout>
