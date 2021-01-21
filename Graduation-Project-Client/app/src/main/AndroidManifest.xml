@@ -15,10 +15,6 @@
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
-            <!--文件显示：显示全部图片 -->
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_path" />
         </provider>
 
         <activity android:name="com.example.user.toy.MainActivity">
@@ -30,24 +26,12 @@
         </activity>
         <!-- windowSoftInputMode 控制 home界面键盘-->
         <activity android:name="com.example.user.toy.TabHostActivity" android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".home.activityAndFragment.HomePublishUpdatesActivity"/>
-        <activity android:name=".home.activityAndFragment.Detail"/>
-        <activity android:name="com.example.user.toy.personal.activityAndFragment.PersonalChangeMessageActivity"/>
-        <activity android:name="com.example.user.toy.personal.activityAndFragment.PersonalTrendsListActivity"/>
-        <activity android:name="com.example.user.toy.personal.activityAndFragment.PersonalChangeNameActivity"/>
-        <activity android:name="com.example.user.toy.personal.activityAndFragment.PersonalFollowListActivity"/>
-        <activity android:name="com.example.user.toy.personal.activityAndFragment.PersonalFansListActivity"/>
-        <activity android:name="com.example.user.toy.personal.activityAndFragment.PersonalHistroyListActivity"/>
-        <activity android:name="com.example.user.toy.personal.activityAndFragment.PersonalCollectionListActivity"/>
-        <activity android:name="com.example.user.toy.personal.activityAndFragment.PersonlSettingsActivity"/>
         <activity android:name="com.example.user.toy.personal.activityAndFragment.PeraonalChangePasswordActivity"/>
-        <activity android:name=".message.activityAndFragment.ChatRecordActivity"/>
         <activity android:name="com.example.user.toy.LoginByNickNameActivity"/>
         <activity android:name="com.example.user.toy.LoginByPhoneActivity"/>
         <activity android:name="com.example.user.toy.FindPasswordActivity"/>
         <activity android:name="com.example.user.toy.RegisterActivity"/>
         <activity android:name="com.example.user.toy.ServiceWord"/>
-        <activity android:name=".home.activityAndFragment.FoodCategoryItemDetail"/>
 
 
 

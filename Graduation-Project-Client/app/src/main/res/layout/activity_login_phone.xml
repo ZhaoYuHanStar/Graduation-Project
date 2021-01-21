@@ -35,7 +35,7 @@
             <EditText
                 android:id="@+id/et_user_phone"
                 android:layout_width="215dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="手机号" />
             <TextView
                 android:id="@+id/et_sendPhoneCode"

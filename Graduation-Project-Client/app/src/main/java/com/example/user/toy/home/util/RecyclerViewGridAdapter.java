@@ -14,7 +14,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.util.Util;
 import com.example.user.toy.R;
-import com.example.user.toy.home.activityAndFragment.FoodListItemDetail;
 import com.example.user.toy.home.entity.HomeListItemBean;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -71,18 +70,18 @@ public class RecyclerViewGridAdapter extends RecyclerView.Adapter <RecyclerViewG
         //从集合里拿对应的item的数据对象
         HomeListItemBean listBean = dateBean.get (i);
         //给Holder里面的控件对象设置数据
-        gridViewHolder.setData (listBean);
+        //gridViewHolder.setData (listBean);
 
         gridViewHolder.itemView.setOnClickListener (new View.OnClickListener ( ) {
             @Override
             public void onClick( View v ) {
                 Log.e ("点击位置" , "你点的第" + i + "个。");
-                Intent intent = new Intent (mContext , FoodListItemDetail.class);
+                //Intent intent = new Intent (mContext , ToyListItemDetail.class);
                 builder = new GsonBuilder ( );
                 gson = builder.create ( );
                 jsonString = gson.toJson (dateBean.get (i));
-                intent.putExtra ("食物数据" , jsonString);
-                mContext.startActivity (intent);
+                //intent.putExtra ("玩具数据" , jsonString);
+               // mContext.startActivity (intent);
 
             }
         });
@@ -116,7 +115,7 @@ public class RecyclerViewGridAdapter extends RecyclerView.Adapter <RecyclerViewG
             myLikeNum = itemView.findViewById (R.id.item_list_num);
         }
 
-        public void setData( HomeListItemBean data ) {
+        /*public void setData( HomeListItemBean data ) {
             RequestOptions requestOptions = new RequestOptions ().bitmapTransform(new CropCircleTransformation());
             //RequestOptions requestOptions = new RequestOptions().centerCrop();
             if (Util.isOnMainThread()) {
@@ -130,7 +129,7 @@ public class RecyclerViewGridAdapter extends RecyclerView.Adapter <RecyclerViewG
                 myLikeNum.setText (data.likeNum);
             }
 
-        }
+        }*/
     }
 
     public void add( List <HomeListItemBean> addMessageList ) {
