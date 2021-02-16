@@ -1,13 +1,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/welcome"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="160dp"
         android:orientation="vertical">
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -36,6 +37,10 @@
                 android:id="@+id/et_user_phone"
                 android:layout_width="215dp"
                 android:layout_height="match_parent"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:theme="@style/MyEditText1"
+                android:selectAllOnFocus="true"
                 android:hint="手机号" />
             <TextView
                 android:id="@+id/et_sendPhoneCode"
@@ -44,7 +49,9 @@
                 android:onClick="onClickPhone"
                 android:padding="10dp"
                 android:text="获取验证码"
-                android:textColor="#000" />
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:selectAllOnFocus="true" />
         </LinearLayout>
 
         <LinearLayout
@@ -62,51 +69,27 @@
                 android:id="@+id/et_phonecode"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
+                android:theme="@style/MyEditText1"
+                android:textColor="#fff"
+                android:textColorHint="#fff"
+                android:selectAllOnFocus="true"
                 android:hint="验证码" />
 
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_loginByPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorBtn"
-            android:onClick="onClickPhone"
-            android:text="登录"
-            android:textAlignment="center"
-            android:textColor="#fff" />
-
-        <!--注册-->
         <TextView
-            android:id="@+id/tv_toRegister"
-            android:padding="20dp"
-            android:onClick="onClickPhone"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <!--联系我们-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_loginByPhone"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="30dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:text="如有问题，请联系我们--QQ:1479121080"
-                />
-
-        </RelativeLayout>
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="进入玩易"
+            android:textColor="#fff"
+            android:textSize="24sp" />
 
     </LinearLayout>
+
 </LinearLayout>

@@ -104,10 +104,10 @@ public class HomeFragment extends Fragment {
      */
     public void initClassificationData() {
         //图标
-        int icon[] = {R.drawable.i1, R.drawable.i1, R.drawable.i1, R.drawable.i1,
-                R.drawable.i1, R.drawable.i1, R.drawable.i1, R.drawable.i1};
+        int icon[] = {R.drawable.i1, R.drawable.i1, R.drawable.i1,
+                R.drawable.i1, R.drawable.i1, R.drawable.i1};
         //图标下的文字
-        String name[] = {"玩具","玩具","玩具","玩具","玩具","玩具","玩具","玩具"};
+        String name[] = {"益智玩具","动手玩具","装饰玩具","机械玩具","图纸玩具","声音玩具"};
         dataClassificationList = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < icon.length; i++) {
             Map<String, Object> map = new HashMap<String, Object>();

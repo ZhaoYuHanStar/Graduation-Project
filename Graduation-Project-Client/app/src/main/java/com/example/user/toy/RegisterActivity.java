@@ -48,7 +48,6 @@ public class RegisterActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("loginInfo", MODE_PRIVATE);
         //初始化控件
         init();
-        setService();
         //监听密码框，确认密码输入位数
         password.setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
         // 注册一个事件回调，用于处理SMSSDK接口请求的结果
@@ -144,9 +143,11 @@ public class RegisterActivity extends AppCompatActivity {
                                     Toast.makeText(RegisterActivity.this, "密码必须同时包含大小写字母及数字", Toast.LENGTH_SHORT).show();
                                 } else {
                                     user = new User();
-                                    user.setNickname(name.getText().toString());
+                                    user.setName(name.getText().toString());
                                     user.setPassword(password.getText().toString());
                                     user.setPhone(phoneNum.getText().toString());
+                                    //性别默认男
+                                    user.setSex("男");
                                     userStr = gson.toJson(user);
 
                                     RegisterTask registerTask = new RegisterTask();
@@ -227,13 +228,6 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         SMSSDK.unregisterEventHandler(eventHandler);
-    }
-
-    //设置服务条款
-    public void setService() {
-        String str = "注册即代表阅读并同意<font color='#01b091'>服务条款</font>";
-        service.setTextSize(15);
-        service.setText(Html.fromHtml(str));
     }
 }
 
