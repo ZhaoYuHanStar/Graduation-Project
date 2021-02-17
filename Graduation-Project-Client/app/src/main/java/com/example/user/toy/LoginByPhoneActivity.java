@@ -43,7 +43,6 @@ public class LoginByPhoneActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("loginInfo", MODE_PRIVATE);
         init();
         // 注册一个事件回调，用于处理SMSSDK接口请求的结果
-        showTip();
         SMSSDK.registerEventHandler(eventHandler);
     }
 
@@ -52,7 +51,6 @@ public class LoginByPhoneActivity extends AppCompatActivity {
         phonenum = findViewById(R.id.et_user_phone);
         myCode = findViewById(R.id.et_phonecode);
         symbol = findViewById(R.id.symbol);
-        toRegister = findViewById(R.id.tv_toRegister);
     }
 
 
@@ -70,7 +68,7 @@ public class LoginByPhoneActivity extends AppCompatActivity {
                 break;
 
             // 提交验证码，其中的code表示验证码，如“1357”
-            case R.id.btn_loginByPhone:
+            case R.id.tv_loginByPhone:
                 if (phonenum.getText().toString().equals("") || myCode.getText().toString().equals("")) {
                     Toast.makeText(LoginByPhoneActivity.this, "请输入必要信息", Toast.LENGTH_SHORT).show();
                 } else {
@@ -79,11 +77,6 @@ public class LoginByPhoneActivity extends AppCompatActivity {
 
                 break;
 
-            //到注册页面
-            case R.id.tv_toRegister:
-                Intent intent = new Intent(LoginByPhoneActivity.this, RegisterActivity.class);
-                startActivity(intent);
-                break;
 
         }
     }
@@ -184,14 +177,6 @@ public class LoginByPhoneActivity extends AppCompatActivity {
             }
             super.onPostExecute(result);
         }
-    }
-
-    //显示温馨提示
-    public void showTip(){
-
-        String str = "温馨提示：如您未注册，请先<font color='#01b091'>注册</font>";
-        toRegister.setTextSize(15);
-        toRegister.setText(Html.fromHtml(str));
     }
 }
 

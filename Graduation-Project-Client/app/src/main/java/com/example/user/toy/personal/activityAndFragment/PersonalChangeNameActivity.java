@@ -46,7 +46,7 @@ public class PersonalChangeNameActivity extends AppCompatActivity {
                 intent.putExtra("changename",etName.getText().toString());
                 setResult(101,intent);
                 okHttpClient = new OkHttpClient();
-                user.setNickname(etName.getText().toString());
+                user.setName(etName.getText().toString());
                 requestData(user);
             }
         });
@@ -80,7 +80,7 @@ public class PersonalChangeNameActivity extends AppCompatActivity {
     private void findViews() {
         etName = findViewById(R.id.et_change_name);
         button = findViewById(R.id.btn_change_name);
-        etName.setText(user.getNickname());
+        etName.setText(user.getName());
     }
 
 }
