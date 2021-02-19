@@ -2,6 +2,7 @@ package com.example.user.toy.home.activityAndFragment;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
@@ -40,6 +43,8 @@ import static android.widget.GridLayout.VERTICAL;
 
 public class HomeFragment extends Fragment {
 
+    //搜索框
+    private SearchView searchView;
     private GridView gridView;
     private List<Map<String, Object>> dataClassificationList;
     private SimpleAdapter adapter;
@@ -51,6 +56,7 @@ public class HomeFragment extends Fragment {
 
     private SmartRefreshLayout smartRefreshLayout;
     private OkHttpClient okHttpClient;
+
 
     //实体类还没有写
     /*private List<Toy> toyList;*/
@@ -75,6 +81,7 @@ public class HomeFragment extends Fragment {
         }
         initClassificationData();
         setClassification();
+        setSearchView();
         loadTrueData();
         refresh();
         return view;
@@ -86,6 +93,7 @@ public class HomeFragment extends Fragment {
      * @param view
      */
     public void findViews(View view) {
+        searchView = view.findViewById(R.id.home_searchView);
         gridView = view.findViewById(R.id.home_classification);
         recyclerView = view.findViewById(R.id.home_recycler_view);
         smartRefreshLayout = view.findViewById(R.id.home_smartRefreshLayout);
@@ -97,6 +105,33 @@ public class HomeFragment extends Fragment {
         okHttpClient = new OkHttpClient();
 
     }
+
+   /*
+   * 搜索框
+   */
+   public void setSearchView(){
+       //设置该SearchView显示搜索按钮
+       searchView.setSubmitButtonEnabled(true);
+       //设置默认提示文字
+       searchView.setQueryHint("输入您想查找的内容");
+       //配置监听器
+       searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+           // 当点击搜索按钮时将搜索字段传个下个页面
+           @Override
+           public boolean onQueryTextSubmit(String query) {
+               Intent intent = new Intent(getContext(),SearchListActivity.class);
+               intent.putExtra("搜索字段",query);
+               startActivity(intent);
+               return false;
+           }
+
+           @Override
+           public boolean onQueryTextChange(String s) {
+               return false;
+           }
+       });
+
+   }
 
 
     /**

@@ -1,6 +1,7 @@
 package com.example.user.toy;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.mob.MobSDK;
 
@@ -12,4 +13,6 @@ public class MyApplication extends Application {
         MobSDK.init(this);
         MobSDK.submitPolicyGrantResult(true, null);
     }
+
+
 }

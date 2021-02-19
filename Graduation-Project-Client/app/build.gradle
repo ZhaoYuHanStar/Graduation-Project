@@ -6,19 +6,13 @@ MobSDK {
     appKey "2f02b9b4f463f"
     appSecret "77ab895e802d871c66daafedf65855f8"
     SMSSDK {}
-    ShareSDK {
-        QQ {
-            appId "101870951"
-            appKey "f8f4d1027bc7ad4818423e55afbd74fc"
-            shareByAppClient true
-        }
-    }
 }
 
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.user.jiancan"
+        multiDexEnabled true
+        applicationId "com.example.user.graduation"
         minSdkVersion 28
         targetSdkVersion 28
         versionCode 1
@@ -74,4 +68,6 @@ dependencies {
 
     //阿里
     implementation group: 'com.alibaba', name: 'fastjson', version:'1.2.41'
+
+    implementation 'com.android.support:multidex:1.0.2'
 }

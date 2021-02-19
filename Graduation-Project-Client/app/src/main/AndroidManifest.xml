@@ -9,12 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:theme="@style/AppTheme">
-        <provider
+        >
+       <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
+           <meta-data
+               android:name="android.support.FILE_PROVIDER_PATHS"
+               android:resource="@xml/file_path" />
         </provider>
 
         <activity android:name="com.example.user.toy.MainActivity">
@@ -25,13 +28,14 @@
             </intent-filter>
         </activity>
         <!-- windowSoftInputMode 控制 home界面键盘-->
-        <activity android:name="com.example.user.toy.TabHostActivity" android:windowSoftInputMode="adjustPan"/>
-        <activity android:name="com.example.user.toy.personal.activityAndFragment.PeraonalChangePasswordActivity"/>
+        <activity android:name="com.example.user.toy.TabHostActivity" android:windowSoftInputMode="adjustPan" />
+        <activity android:name="com.example.user.toy.personal.activityAndFragment.PeraonalChangePasswordActivity" />
         <activity android:name="com.example.user.toy.LoginByNickNameActivity"/>
         <activity android:name="com.example.user.toy.LoginByPhoneActivity"/>
         <activity android:name="com.example.user.toy.FindPasswordActivity"/>
         <activity android:name="com.example.user.toy.RegisterActivity"/>
         <activity android:name="com.example.user.toy.ServiceWord"/>
+        <activity android:name="com.example.user.toy.home.activityAndFragment.SearchListActivity"/>
 
 
 

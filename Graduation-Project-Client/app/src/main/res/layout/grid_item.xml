@@ -37,7 +37,7 @@
             android:id="@+id/item_list_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="75dp"
+            android:layout_marginLeft="65dp"
             android:layout_marginTop="3dp"
             android:src="@drawable/icon_like" />
 
@@ -46,6 +46,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="3dp"
-            android:text="点赞数" />
+            android:text="33元/时" />
     </LinearLayout>
 </LinearLayout>

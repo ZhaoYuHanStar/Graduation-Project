@@ -34,7 +34,6 @@ public class LoginByNickNameActivity extends AppCompatActivity {
     private TextView copyright = null;
     private ImageView symbol = null;
     private Gson gson;
-    private Intent intentFrom;
     private Intent toIntent;
 
     @Override
@@ -48,13 +47,11 @@ public class LoginByNickNameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_nickname);
         sharedPreferences = getSharedPreferences("loginInfo", MODE_PRIVATE);
         init();
-        setCopyRight();
         isAutoLogin();
     }
 
     //初始化控件
     public void init() {
-        intentFrom = this.getIntent();
         gson = new Gson();
         symbol = findViewById(R.id.symbol);
         nickname = findViewById(R.id.et_loginNickname);
@@ -62,12 +59,6 @@ public class LoginByNickNameActivity extends AppCompatActivity {
         automatic = findViewById(R.id.automatic);
         remember = findViewById(R.id.remember);
         copyright = findViewById(R.id.copyright);
-    }
-
-    //判断来源activity
-    public void checkActivity(){
-        String activityFrom = intentFrom.getStringExtra("activityFrom");
-        toIntent = new Intent(LoginByNickNameActivity.this,activityFrom.getClass());
     }
     //点击事件
     public void onClickMain(View v) {
@@ -198,13 +189,6 @@ public class LoginByNickNameActivity extends AppCompatActivity {
             password.setText(passwordAuto);
             remember.setChecked(true);
         }
-    }
-
-    //设置版本号
-    public void setCopyRight() {
-        String str = "简餐@2020 All Service Reserved";
-        copyright.setTextSize(15);
-        copyright.setText(Html.fromHtml(str));
     }
 
 }
