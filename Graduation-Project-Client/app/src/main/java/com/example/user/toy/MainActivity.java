@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public void getHome() {
-        /*Intent intent = new Intent(MainActivity.this, LoginByNickNameActivity.class);*/
+        //Intent intent = new Intent(MainActivity.this, LoginByNickNameActivity.class);
         Intent intent = new Intent(MainActivity.this, TabHostActivity.class);
         startActivity(intent);
         finish();

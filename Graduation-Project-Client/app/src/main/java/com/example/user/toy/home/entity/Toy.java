@@ -1,5 +1,7 @@
 package com.example.user.toy.home.entity;
 
+import java.util.Set;
+
 public class Toy {
     private int id;
     private String ageId;
@@ -8,6 +10,9 @@ public class Toy {
     private int typeId;
     private int userId;
     private int state;
+    private String produce;
+    private Set<Img> images;
+    private String price;
 
     public int getId() {
         return id;
@@ -31,6 +36,14 @@ public class Toy {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getProduce() {
+        return produce;
+    }
+
+    public void setProduce(String produce) {
+        this.produce = produce;
     }
 
     public int getBranchId() {
@@ -65,6 +78,22 @@ public class Toy {
         this.state = state;
     }
 
+    public Set<Img> getImages() {
+        return images;
+    }
+
+    public void setImages(Set<Img> images) {
+        this.images = images;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Toy{" +
@@ -75,6 +104,9 @@ public class Toy {
                 ", typeId=" + typeId +
                 ", userId=" + userId +
                 ", state=" + state +
+                ", produce='" + produce + '\'' +
+                ", images=" + images +
+                ", price='" + price + '\'' +
                 '}';
     }
 }

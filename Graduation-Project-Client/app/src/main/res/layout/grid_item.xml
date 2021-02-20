@@ -12,7 +12,7 @@
         android:src="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/item_list_name"
+        android:id="@+id/item_list_produce"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -27,25 +27,23 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/item_list_user"
+            android:id="@+id/item_list_age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="用户" />
+            android:text="适应年龄" />
 
         <ImageView
-            android:id="@+id/item_list_like"
+            android:id="@+id/item_list_rmb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="65dp"
-            android:layout_marginTop="3dp"
-            android:src="@drawable/icon_like" />
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/icon_price" />
 
         <TextView
-            android:id="@+id/item_list_num"
+            android:id="@+id/item_list_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
             android:text="33元/时" />
     </LinearLayout>
 </LinearLayout>

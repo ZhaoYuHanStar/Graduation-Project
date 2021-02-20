@@ -15,6 +15,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.util.Util;
 import com.example.user.toy.R;
 import com.example.user.toy.home.entity.HomeListItemBean;
+import com.example.user.toy.home.entity.Toy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -70,7 +71,7 @@ public class RecyclerViewGridAdapter extends RecyclerView.Adapter <RecyclerViewG
         //从集合里拿对应的item的数据对象
         HomeListItemBean listBean = dateBean.get (i);
         //给Holder里面的控件对象设置数据
-        //gridViewHolder.setData (listBean);
+        gridViewHolder.setData (listBean);
 
         gridViewHolder.itemView.setOnClickListener (new View.OnClickListener ( ) {
             @Override
@@ -99,23 +100,23 @@ public class RecyclerViewGridAdapter extends RecyclerView.Adapter <RecyclerViewG
         /**
          * 1.显示图片
          * 2.简介
-         * 3.用户名
-         * 4.点赞数
+         * 3.适应年龄
+         * 4.价格
          */
-        private ImageView showImage;
-        private TextView myName;
-        private TextView myUser;
-        private TextView myLikeNum;
+        private ImageView image;
+        private TextView produce;
+        private TextView age;
+        private TextView price;
 
         public GridViewHolder( @NonNull View itemView ) {
             super (itemView);
-            showImage = itemView.findViewById (R.id.item_list_icon);
-            myName = itemView.findViewById (R.id.item_list_name);
-            myUser = itemView.findViewById (R.id.item_list_user);
-            myLikeNum = itemView.findViewById (R.id.item_list_num);
+            image = itemView.findViewById (R.id.item_list_icon);
+            produce = itemView.findViewById (R.id.item_list_produce);
+            age = itemView.findViewById (R.id.item_list_age);
+            price = itemView.findViewById (R.id.item_list_price);
         }
 
-        /*public void setData( HomeListItemBean data ) {
+        public void setData( HomeListItemBean data ) {
             RequestOptions requestOptions = new RequestOptions ().bitmapTransform(new CropCircleTransformation());
             //RequestOptions requestOptions = new RequestOptions().centerCrop();
             if (Util.isOnMainThread()) {
@@ -123,13 +124,13 @@ public class RecyclerViewGridAdapter extends RecyclerView.Adapter <RecyclerViewG
                 Glide.with (mContext)
                         .load (data.showImg)
                         .apply (requestOptions)
-                        .into (showImage);
-                myName.setText (data.name);
-                myUser.setText (data.user);
-                myLikeNum.setText (data.likeNum);
+                        .into (image);
+                produce.setText (data.produce);
+                age.setText (data.age);
+                price.setText (data.price);
             }
 
-        }*/
+        }
     }
 
     public void add( List <HomeListItemBean> addMessageList ) {
@@ -143,15 +144,6 @@ public class RecyclerViewGridAdapter extends RecyclerView.Adapter <RecyclerViewG
         //刷新数据
         dateBean.removeAll (dateBean);
         dateBean.addAll (newList);
-        notifyDataSetChanged ( );
-    }
-
-    /**
-     * 搜索结果展示方法
-     */
-    public void showFoodSearchResult( ArrayList <HomeListItemBean> homeListItemBeans ) {
-        dateBean = new ArrayList <> ( );
-        dateBean.addAll (homeListItemBeans);
         notifyDataSetChanged ( );
     }
 
