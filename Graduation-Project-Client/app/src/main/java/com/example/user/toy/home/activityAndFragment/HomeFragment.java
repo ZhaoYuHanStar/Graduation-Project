@@ -4,11 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.media.MediaMetadataRetriever;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -27,16 +23,12 @@ import android.widget.SearchView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import com.example.user.toy.LoginByPhoneActivity;
 import com.example.user.toy.R;
-import com.example.user.toy.TabHostActivity;
 import com.example.user.toy.home.entity.HomeListItemBean;
 import com.example.user.toy.home.entity.Img;
 import com.example.user.toy.home.entity.Toy;
 import com.example.user.toy.home.util.RecyclerViewGridAdapter;
 import com.example.user.toy.personal.entity.User;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -46,19 +38,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.lang.reflect.Type;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -83,7 +66,7 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerViewGridAdapter recyclerViewGridAdapter;
-    private ArrayList<HomeListItemBean> dateBeanArrayList;
+    private ArrayList<HomeListItemBean> dateBeanArrayList = new ArrayList<HomeListItemBean>();
 
     private SmartRefreshLayout smartRefreshLayout;
     private OkHttpClient okHttpClient;
@@ -167,8 +150,8 @@ public class HomeFragment extends Fragment {
      */
     public void initClassificationData() {
         //图标
-        int icon[] = {R.drawable.i1, R.drawable.i1, R.drawable.i1,
-                R.drawable.i1, R.drawable.i1, R.drawable.i1};
+        int icon[] = {R.drawable.i1, R.drawable.i2, R.drawable.i3,
+                R.drawable.i4, R.drawable.i5, R.drawable.i6};
         //图标下的文字
         String name[] = {"益智玩具","动手玩具","装饰玩具","机械玩具","图纸玩具","声音玩具"};
         dataClassificationList = new ArrayList<Map<String, Object>>();
@@ -191,14 +174,33 @@ public class HomeFragment extends Fragment {
 
         gridView.setAdapter(adapter);
 
+        //分类块点击事件：跳转到分类列表ToyCategoryItemList
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
-                Toast.makeText(getContext(), dataClassificationList.get(arg2).get("text").toString(), Toast.LENGTH_SHORT).show();
-                //跳转到分类详情页面
-                Intent intent = new Intent(getContext(), ToyCategoryItemDetail.class);
-                intent.putExtra("分类信息", dataClassificationList.get(arg2).get("text").toString());
+                //跳转到分类列表页面
+                Intent intent = new Intent(getContext(), ToyCategoryItemList.class);
+                switch (dataClassificationList.get(arg2).get("text").toString()){
+                    case "益智玩具":
+                        intent.putExtra("typeId",1);
+                        break;
+                    case "动手玩具":
+                        intent.putExtra("typeId",2);
+                        break;
+                    case "装饰玩具":
+                        intent.putExtra("typeId",3);
+                        break;
+                    case "机械玩具":
+                        intent.putExtra("typeId",4);
+                        break;
+                    case "图纸玩具":
+                        intent.putExtra("typeId",5);
+                        break;
+                    case "声音玩具":
+                        intent.putExtra("typeId",6);
+                        break;
+                }
                 startActivity(intent);
 
             }
@@ -228,6 +230,9 @@ public class HomeFragment extends Fragment {
 
     }
 
+    /*
+        访问权限
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -242,14 +247,23 @@ public class HomeFragment extends Fragment {
      * 真实数据设置adapter
      */
     private void loadTrueData() {
-        dateBeanArrayList = getDataFromRequest();
+        //dateBeanArrayList = getDataFromRequest();
+        //假数据
+        HomeListItemBean bean1 = new HomeListItemBean();
+        bean1.setType("益智玩具");
+        bean1.setPrice("23/周");
+        bean1.setId(1);
+        bean1.setProduce("儿童科学实验套装科技制作手工发明小学生玩具幼儿园stem彩虹盒子");
+        bean1.setAge("0-3岁");
+        bean1.setShowImg("https://cn.bing.com/images/search?view=detailV2&ccid=n9ygCSmV&id=75F7673E25D7A3E98979D7DEDDC1AC05F0177050&thid=OIP.n9ygCSmVuEeTVsz9V2pnhQHaHa&mediaurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR9fdca0092995b8479356ccfd576a6785%3frik%3dUHAX8AWswd3e1w%26riu%3dhttp%253a%252f%252fimg03.taobaocdn.com%252fbao%252fuploaded%252fi3%252fT16FV.XXRsXXXro2c._111852.jpg%26ehk%3dN7Tck%252f0tJU08iM5ivYyGJO8FvCx6xOEjeq%252b2VA19Nf8%253d%26risl%3d%26pid%3dImgRaw&exph=1200&expw=1200&q=%E7%9B%8A%E6%99%BA%E7%8E%A9%E5%85%B7&simid=608056168748222135&ck=D8FD234D59ED0E6E309FA7608DA3B2CA&selectedIndex=0&FORM=IRPRST&ajaxhist=0");
+        dateBeanArrayList.add(bean1);
         //创建适配器adapter对象 参数1.上下文 2.数据加载集合
         recyclerViewGridAdapter = new RecyclerViewGridAdapter(this.getContext(), dateBeanArrayList);
         //设置适配器
         recyclerView.setAdapter(recyclerViewGridAdapter);
 
-        //布局管理器对象 参数1.上下文 2.规定显示的行数
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getContext(), 2) {
+        //布局管理器对象 参数1.上下文 2.规定显示的列数
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getContext(), 1) {
             @Override
             public boolean canScrollVertically() {
                 // 直接禁止垂直滑动
@@ -265,10 +279,11 @@ public class HomeFragment extends Fragment {
     }
 
     /**
-     * 数据库数据调用
+     * 数据库数据调用 获取推荐裂列表
      */
     private ArrayList<HomeListItemBean> getDataFromRequest() {
         RequestBody body = RequestBody.create(MediaType.parse("text/plain"), "1");
+        //记得最后补上url
         Request request = new Request.Builder().url("").post(body).build();
         Call call = okHttpClient.newCall(request);
         final ArrayList<HomeListItemBean> dateBeanList = new ArrayList<>();

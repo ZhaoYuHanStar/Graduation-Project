@@ -36,6 +36,8 @@
         <activity android:name="com.example.user.toy.RegisterActivity"/>
         <activity android:name="com.example.user.toy.ServiceWord"/>
         <activity android:name="com.example.user.toy.home.activityAndFragment.SearchListActivity"/>
+        <activity android:name=".home.activityAndFragment.ToyCategoryItemList"/>
+        <activity android:name=".home.activityAndFragment.ToyListItemDetail"/>
 
 
 

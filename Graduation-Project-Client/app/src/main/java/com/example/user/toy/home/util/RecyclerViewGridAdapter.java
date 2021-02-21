@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.util.Util;
 import com.example.user.toy.R;
+import com.example.user.toy.home.activityAndFragment.ToyListItemDetail;
 import com.example.user.toy.home.entity.HomeListItemBean;
 import com.example.user.toy.home.entity.Toy;
 import com.google.gson.Gson;
@@ -72,17 +73,17 @@ public class RecyclerViewGridAdapter extends RecyclerView.Adapter <RecyclerViewG
         HomeListItemBean listBean = dateBean.get (i);
         //给Holder里面的控件对象设置数据
         gridViewHolder.setData (listBean);
-
+        //列表item点击事件：跳转到玩具详情页面
         gridViewHolder.itemView.setOnClickListener (new View.OnClickListener ( ) {
             @Override
             public void onClick( View v ) {
-                Log.e ("点击位置" , "你点的第" + i + "个。");
-                //Intent intent = new Intent (mContext , ToyListItemDetail.class);
+
+                Intent intent = new Intent (mContext , ToyListItemDetail.class);
                 builder = new GsonBuilder ( );
                 gson = builder.create ( );
                 jsonString = gson.toJson (dateBean.get (i));
-                //intent.putExtra ("玩具数据" , jsonString);
-               // mContext.startActivity (intent);
+                intent.putExtra ("玩具数据" , jsonString);
+                mContext.startActivity (intent);
 
             }
         });
@@ -117,14 +118,9 @@ public class RecyclerViewGridAdapter extends RecyclerView.Adapter <RecyclerViewG
         }
 
         public void setData( HomeListItemBean data ) {
-            RequestOptions requestOptions = new RequestOptions ().bitmapTransform(new CropCircleTransformation());
-            //RequestOptions requestOptions = new RequestOptions().centerCrop();
+
             if (Util.isOnMainThread()) {
-                //Glide.with(context).load(path).into(imageView);
-                Glide.with (mContext)
-                        .load (data.showImg)
-                        .apply (requestOptions)
-                        .into (image);
+                Glide.with(mContext).load(data.showImg).into(image);
                 produce.setText (data.produce);
                 age.setText (data.age);
                 price.setText (data.price);
