@@ -82,7 +82,7 @@ public class RecyclerViewGridAdapter extends RecyclerView.Adapter <RecyclerViewG
                 builder = new GsonBuilder ( );
                 gson = builder.create ( );
                 jsonString = gson.toJson (dateBean.get (i));
-                intent.putExtra ("玩具数据" , jsonString);
+                intent.putExtra ("toyBean" , jsonString);
                 mContext.startActivity (intent);
 
             }
@@ -120,7 +120,9 @@ public class RecyclerViewGridAdapter extends RecyclerView.Adapter <RecyclerViewG
         public void setData( HomeListItemBean data ) {
 
             if (Util.isOnMainThread()) {
-                Glide.with(mContext).load(data.showImg).into(image);
+                //Glide.with(mContext).load(data.showImg).into(image);
+                //Glide.with(mContext).load(R.drawable.i1).into(image);
+                Glide.with(mContext).load(data.getShowImg()).into(image);
                 produce.setText (data.produce);
                 age.setText (data.age);
                 price.setText (data.price);

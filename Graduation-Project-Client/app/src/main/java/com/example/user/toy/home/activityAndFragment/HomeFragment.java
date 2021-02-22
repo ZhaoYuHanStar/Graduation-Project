@@ -255,7 +255,15 @@ public class HomeFragment extends Fragment {
         bean1.setId(1);
         bean1.setProduce("儿童科学实验套装科技制作手工发明小学生玩具幼儿园stem彩虹盒子");
         bean1.setAge("0-3岁");
-        bean1.setShowImg("https://cn.bing.com/images/search?view=detailV2&ccid=n9ygCSmV&id=75F7673E25D7A3E98979D7DEDDC1AC05F0177050&thid=OIP.n9ygCSmVuEeTVsz9V2pnhQHaHa&mediaurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR9fdca0092995b8479356ccfd576a6785%3frik%3dUHAX8AWswd3e1w%26riu%3dhttp%253a%252f%252fimg03.taobaocdn.com%252fbao%252fuploaded%252fi3%252fT16FV.XXRsXXXro2c._111852.jpg%26ehk%3dN7Tck%252f0tJU08iM5ivYyGJO8FvCx6xOEjeq%252b2VA19Nf8%253d%26risl%3d%26pid%3dImgRaw&exph=1200&expw=1200&q=%E7%9B%8A%E6%99%BA%E7%8E%A9%E5%85%B7&simid=608056168748222135&ck=D8FD234D59ED0E6E309FA7608DA3B2CA&selectedIndex=0&FORM=IRPRST&ajaxhist=0");
+        Img img1 = new Img();
+        img1.setSrc("http://img03.taobaocdn.com/bao/uploaded/i3/T16FV.XXRsXXXro2c._111852.jpg");
+        Img img2 = new Img();
+        img2.setSrc("https://cbu01.alicdn.com/img/ibank/2017/092/014/4092410290_1158561663.jpg");
+        bean1.setShowImg("http://img03.taobaocdn.com/bao/uploaded/i3/T16FV.XXRsXXXro2c._111852.jpg");
+        Set<Img> imgs = new HashSet<>();
+        imgs.add(img1);
+        imgs.add(img2);
+        bean1.setImages(imgs);
         dateBeanArrayList.add(bean1);
         //创建适配器adapter对象 参数1.上下文 2.数据加载集合
         recyclerViewGridAdapter = new RecyclerViewGridAdapter(this.getContext(), dateBeanArrayList);

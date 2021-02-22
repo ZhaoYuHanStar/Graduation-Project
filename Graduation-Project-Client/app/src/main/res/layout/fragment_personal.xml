@@ -3,4 +3,118 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/colorBackground"/>
+    <LinearLayout
+        android:id="@+id/ll_histroy"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <ImageView
+            android:layout_marginLeft="25dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/personal_buy"/>
+        <TextView
+            android:text="我的订单"
+            android:layout_marginLeft="20dp"
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:src="@drawable/personal_right_arrow"
+            android:layout_marginLeft="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#F5F5F5"/>
+    <LinearLayout
+        android:id="@+id/ll_collection"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <ImageView
+            android:layout_marginLeft="25dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/personal_goods"
+            />
+        <TextView
+            android:text="我的商品"
+            android:layout_marginLeft="20dp"
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:src="@drawable/personal_right_arrow"
+            android:layout_marginLeft="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#F5F5F5"/>
+    <LinearLayout
+        android:id="@+id/ll_download"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <ImageView
+            android:layout_marginLeft="25dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/presonal_address"/>
+        <TextView
+            android:text="地址管理"
+            android:layout_marginLeft="20dp"
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:src="@drawable/personal_right_arrow"
+            android:layout_marginLeft="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#F5F5F5"/>
+    <LinearLayout
+        android:id="@+id/ll_settings"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <ImageView
+            android:layout_marginLeft="25dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/presonal_setting"/>
+        <TextView
+            android:text="设置         "
+            android:layout_marginLeft="20dp"
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:src="@drawable/personal_right_arrow" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#F5F5F5"/>
 </LinearLayout>
