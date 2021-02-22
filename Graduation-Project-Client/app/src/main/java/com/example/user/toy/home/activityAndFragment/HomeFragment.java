@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -29,6 +31,7 @@ import com.example.user.toy.home.entity.Img;
 import com.example.user.toy.home.entity.Toy;
 import com.example.user.toy.home.util.RecyclerViewGridAdapter;
 import com.example.user.toy.personal.entity.User;
+import com.google.gson.Gson;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadmoreListener;
@@ -54,12 +57,11 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import static android.content.Context.MODE_PRIVATE;
 import static android.widget.GridLayout.VERTICAL;
 
 public class HomeFragment extends Fragment {
 
-    //搜索框
-    private SearchView searchView;
     private GridView gridView;
     private List<Map<String, Object>> dataClassificationList;
     private SimpleAdapter adapter;
@@ -68,10 +70,14 @@ public class HomeFragment extends Fragment {
     private RecyclerViewGridAdapter recyclerViewGridAdapter;
     private ArrayList<HomeListItemBean> dateBeanArrayList = new ArrayList<HomeListItemBean>();
 
+    private ImageView toAll;
+
     private SmartRefreshLayout smartRefreshLayout;
     private OkHttpClient okHttpClient;
 
+    private SharedPreferences sharedPreferences = null;
     private User user;
+    private String userStr;
 
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -84,6 +90,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        sharedPreferences = this.getContext().getSharedPreferences("loginInfo", MODE_PRIVATE);
         findViews(view);
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
             if (ActivityCompat.checkSelfPermission(this.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -92,7 +99,7 @@ public class HomeFragment extends Fragment {
         }
         initClassificationData();
         setClassification();
-        setSearchView();
+        //setSearchView();
         loadTrueData();
         refresh();
         return view;
@@ -104,7 +111,14 @@ public class HomeFragment extends Fragment {
      * @param view
      */
     public void findViews(View view) {
-        searchView = view.findViewById(R.id.home_searchView);
+        userStr = sharedPreferences.getString("user","");
+        toAll = view.findViewById(R.id.iv_toAll);
+        toAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent intent = new Intent(getContext(),);
+            }
+        });
         gridView = view.findViewById(R.id.home_classification);
         recyclerView = view.findViewById(R.id.home_recycler_view);
         smartRefreshLayout = view.findViewById(R.id.home_smartRefreshLayout);
@@ -120,7 +134,7 @@ public class HomeFragment extends Fragment {
    /*
    * 搜索框
    */
-   public void setSearchView(){
+/*   public void setSearchView(){
        //设置该SearchView显示搜索按钮
        searchView.setSubmitButtonEnabled(true);
        //设置默认提示文字
@@ -142,7 +156,7 @@ public class HomeFragment extends Fragment {
            }
        });
 
-   }
+   }*/
 
 
     /**
@@ -287,12 +301,12 @@ public class HomeFragment extends Fragment {
     }
 
     /**
-     * 数据库数据调用 获取推荐裂列表
+     * 数据库数据调用 获取推荐列表--通过用户信息 实现个性化推荐
      */
     private ArrayList<HomeListItemBean> getDataFromRequest() {
         RequestBody body = RequestBody.create(MediaType.parse("text/plain"), "1");
         //记得最后补上url
-        Request request = new Request.Builder().url("").post(body).build();
+        Request request = new Request.Builder().url(""+userStr).post(body).build();
         Call call = okHttpClient.newCall(request);
         final ArrayList<HomeListItemBean> dateBeanList = new ArrayList<>();
         call.enqueue(new Callback() {

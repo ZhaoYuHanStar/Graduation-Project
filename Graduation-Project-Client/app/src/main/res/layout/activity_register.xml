@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/welcome"
@@ -109,6 +110,93 @@
                 android:hint="6-12位密码(包括数字及大小写字母)" />
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="孩子性别"
+            android:layout_marginTop="5dp"
+            android:textColor="#fff"/>
+
+        <RadioGroup
+            android:layout_width ="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rb_id1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="男"
+                android:buttonTint="#fff"
+                android:textColor="#fff"
+                android:checked="true"
+                />
+            <RadioButton
+                android:id="@+id/rb_id2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:buttonTint="#fff"
+                android:textColor="#fff"
+                android:text="女"
+                />
+        </RadioGroup>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:text="年龄段"
+            android:layout_marginTop="5dp"
+            android:textColor="#fff"/>
+        <RadioGroup
+            android:id="@+id/RadioGroup2"
+            android:layout_width ="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <RadioButton
+                android:id="@+id/rb_age1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0-2"
+                android:buttonTint="#fff"
+                android:textColor="#fff"
+                android:textSize="18dp"
+                android:checked="true"
+                />
+            <RadioButton
+                android:id="@+id/rb_age2"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:buttonTint="#fff"
+                android:textSize="18dp"
+                android:textColor="#fff"
+                android:text="3-5"
+                />
+            <RadioButton
+                android:id="@+id/rb_age3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="6-8"
+                android:textSize="18dp"
+                android:buttonTint="#fff"
+                android:textColor="#fff"
+                />
+            <RadioButton
+                android:id="@+id/rb_age4"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:buttonTint="#fff"
+                android:textColor="#fff"
+                android:textSize="18dp"
+                android:text="9-12"
+                />
+        </RadioGroup>
         <TextView
             android:onClick="onClickRegister"
             android:id="@+id/bt_register"

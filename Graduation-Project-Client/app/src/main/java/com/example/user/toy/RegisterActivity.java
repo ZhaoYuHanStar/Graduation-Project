@@ -11,7 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.InputFilter;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +37,12 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText password;
     private EditText myCode;
     private TextView service;
+    private RadioButton sex1;
+    private RadioButton sex2;
+    private RadioButton age1;
+    private RadioButton age2;
+    private RadioButton age3;
+    private RadioButton age4;
     private String result = null;
     private SharedPreferences sharedPreferences = null;
     private Gson gson;
@@ -62,6 +70,14 @@ public class RegisterActivity extends AppCompatActivity {
         service = findViewById(R.id.tv_registerService);
         myCode = findViewById(R.id.et_code);
         gson = new GsonBuilder().serializeNulls() .create();
+
+        sex1 = findViewById(R.id.rb_id1);
+        sex2 = findViewById(R.id.rb_id2);
+        age1 = findViewById(R.id.rb_age1);
+        age2 = findViewById(R.id.rb_age2);
+        age3 = findViewById(R.id.rb_age3);
+        age4 = findViewById(R.id.rb_age4);
+
     }
 
     public void onClickRegister(View v) {
@@ -146,8 +162,24 @@ public class RegisterActivity extends AppCompatActivity {
                                     user.setName(name.getText().toString());
                                     user.setPassword(password.getText().toString());
                                     user.setPhone(phoneNum.getText().toString());
-                                    //性别默认男
-                                    user.setSex("男");
+                                    if (sex1.isChecked()){
+                                        user.setSex("男");
+                                    }
+                                    if (sex2.isChecked()){
+                                        user.setSex("女");
+                                    }
+                                    if (age1.isChecked()){
+                                        user.setAge(1);
+                                    }
+                                    if (age2.isChecked()){
+                                        user.setAge(2);
+                                    }
+                                    if (age3.isChecked()){
+                                        user.setAge(3);
+                                    }
+                                    if (age4.isChecked()){
+                                        user.setAge(4);
+                                    }
                                     userStr = gson.toJson(user);
 
                                     RegisterTask registerTask = new RegisterTask();

@@ -31,9 +31,6 @@ public class LoginByNickNameActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences = null;
     private CheckBox automatic = null;
     private CheckBox remember = null;
-    private TextView copyright = null;
-    private ImageView symbol = null;
-    private Gson gson;
     private Intent toIntent;
 
     @Override
@@ -52,13 +49,10 @@ public class LoginByNickNameActivity extends AppCompatActivity {
 
     //初始化控件
     public void init() {
-        gson = new Gson();
-        symbol = findViewById(R.id.symbol);
         nickname = findViewById(R.id.et_loginNickname);
         password = findViewById(R.id.et_loginPassword);
         automatic = findViewById(R.id.automatic);
         remember = findViewById(R.id.remember);
-        copyright = findViewById(R.id.copyright);
     }
     //点击事件
     public void onClickMain(View v) {
